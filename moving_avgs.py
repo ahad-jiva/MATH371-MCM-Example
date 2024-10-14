@@ -31,16 +31,16 @@ def e_mov_avg(data: str, window_size: int):
 
 
 
-# period = 100
-# weighting_factor = 0.2
-#
-# print(e_mov_avg('bitcoin_price.txt', period))
-#
-# ema = e_mov_avg('bitcoin_price.txt', period)
-# sma = s_mov_avg('bitcoin_price.txt', period)
-# plt.plot(np.loadtxt('bitcoin_price.txt'))
-# plt.plot(ema, label="EMA")
-# plt.plot(sma, label="SMA")
-# plt.legend()
-#
-# plt.show()
+period = 100
+weighting_factor = 0.2
+
+print(e_mov_avg('bitcoin_price.txt', period))
+
+ema = e_mov_avg('bitcoin_price.txt', period)
+sma = s_mov_avg('bitcoin_price.txt', period)
+plt.plot(np.loadtxt('bitcoin_price.txt'))
+plt.plot(ema, label="EMA")
+plt.plot(sma, label="SMA")
+plt.legend()
+
+plt.show()
