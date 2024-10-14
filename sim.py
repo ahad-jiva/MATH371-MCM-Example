@@ -26,12 +26,12 @@ def sim(moving_avg_window: int):
 
     bitcoin_prices = np.loadtxt('bitcoin_price.txt')
     btc_s_mov_avg = s_mov_avg('bitcoin_price.txt', moving_avg_window)
-    btc_purchase_quantity = 1.5
-    btc_sell_quantity = 1.5
+    btc_purchase_quantity = 1
+    btc_sell_quantity = 1
 
     gold_prices = np.loadtxt('gold_price.txt')
     gold_s_mov_avg = s_mov_avg('gold_price.txt', moving_avg_window)
-    gold_purchase_quantity = 0.5
+    gold_purchase_quantity = 1
     gold_sell_quantity = 1
 
     for i in range(min(len(btc_s_mov_avg), len(gold_s_mov_avg)) - 1):
