@@ -35,6 +35,7 @@ def sim(moving_avg_window: int):
     gold_sell_quantity = 1
 
     for i in range(min(len(btc_s_mov_avg), len(gold_s_mov_avg)) - 1):
+        # todo: include functionality for gold trading restrictions
         if (bitcoin_prices[i] < btc_s_mov_avg[i - 1]) and (
                 portfolio[0] > (btc_purchase_quantity * bitcoin_prices[i]) + (
                 0.02 * btc_purchase_quantity * bitcoin_prices[i])):
