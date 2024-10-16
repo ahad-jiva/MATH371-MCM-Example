@@ -13,11 +13,11 @@ from trade_actions import *
 # plt.plot(btc_s_mov_avg)
 # plt.show()
 
-btc_purchases = 0
-btc_sales = 0
-
-gold_purchases = 0
-gold_sales = 0
+# btc_purchases = 0
+# btc_sales = 0
+#
+# gold_purchases = 0
+# gold_sales = 0
 
 
 def sim(moving_avg_window: int):
@@ -34,29 +34,34 @@ def sim(moving_avg_window: int):
     gold_purchase_quantity = 1
     gold_sell_quantity = 1
 
+    btc_purchases = 0
+    btc_sales = 0
+    gold_purchases = 0
+    gold_sales = 0
+
     for i in range(min(len(btc_s_mov_avg), len(gold_s_mov_avg)) - 1):
         # todo: include functionality for gold trading restrictions
         if (bitcoin_prices[i] < btc_s_mov_avg[i - 1]) and (
                 portfolio[0] > (btc_purchase_quantity * bitcoin_prices[i]) + (
                 0.02 * btc_purchase_quantity * bitcoin_prices[i])):
             buy_bitcoin(btc_purchase_quantity, bitcoin_prices[i], portfolio)
-            # btc_purchases += 1
+            btc_purchases += 1
         if bitcoin_prices[i] > btc_s_mov_avg[i - 1]:
             sell_bitcoin(btc_sell_quantity * portfolio[2], bitcoin_prices[i], portfolio)
-            # btc_sales += 1
+            btc_sales += 1
         if (gold_prices[i] < gold_s_mov_avg[i - 1]) and (portfolio[0] > (gold_purchase_quantity * gold_prices[i]) + (
                 0.01 * gold_purchase_quantity * gold_prices[i])):
             buy_gold(gold_purchase_quantity, gold_prices[i], portfolio)
-            # gold_purchases += 1
+            gold_purchases += 1
         if gold_prices[i] > gold_s_mov_avg[i - 1]:
             sell_gold(gold_sell_quantity * portfolio[1], gold_prices[i], portfolio)
-            # gold_sales += 1
+            gold_sales += 1
 
     pf_value = round(portfolio[0] + (gold_prices[len(gold_prices) - 1] * portfolio[1]) + (
                 bitcoin_prices[len(bitcoin_prices) - 1] * portfolio[2]), 2)
     # print(portfolio)
     # print('${:,.2f}'.format(pf_value))
-    return pf_value
+    return [pf_value, btc_purchases, btc_sales, gold_purchases, gold_sales]
     # print(f'Bought and sold BTC {btc_purchases} and {btc_sales} times, respectively.')
     # print(f'Bought and sold gold {gold_purchases} and {gold_sales} times, respectively.')
 
@@ -64,7 +69,8 @@ def sim(moving_avg_window: int):
 results = []
 
 for j in range(1, 251):
-    results.append(sim(j))
+    results.append(sim(j)[0])
+
 plt.bar(list(range(1, 251)), results, width=0.6)
 plt.xlabel("N-day moving average")
 plt.ylabel("Total portfolio value (millions)")
