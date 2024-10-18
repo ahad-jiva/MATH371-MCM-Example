@@ -70,7 +70,7 @@ results = []
 
 for j in range(1, 251):
     results.append(sim(j)[0])
-
+print(max(results))
 plt.bar(list(range(1, 251)), results, width=0.6)
 plt.xlabel("N-day moving average")
 plt.ylabel("Total portfolio value (millions)")
