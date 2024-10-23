@@ -20,10 +20,11 @@ def s_mov_avg(data: str, window_size: int):
 
 
 # function to calculate an n-window exponential moving average of a list of values
+# todo: fix
 def e_mov_avg(data: str, window_size: int):
     asset_val = np.loadtxt(data)
     df = pd.DataFrame(asset_val)
-    averages = df.ewm(span=window_size, adjust=False).mean().values.tolist()
+    averages = df.ewm(alpha=0.1).mean().values.tolist()
     output = []
     for element in averages:
         output.append(element[0])
