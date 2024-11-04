@@ -17,3 +17,5 @@ sim.py is where you can run the model simulation and modify parameters to change
 Run sim.py after setting parameters to simulate trading over all the data. By default, the program will loop over 250 simulations, each with a different moving average window size, and then plot the results for each window on a graph. All parameters left at their default should result in a 21-day moving average scoring the highest and a 1-day moving average scoring the worst.
 
 To just run one simulation, comment out the ```for``` loop on lines 76-78 and call the ```sim``` function with a specific moving average window size as an argument. Uncomment line 79 to print the results of the simulation. The ```sim``` function returns a list containing the total portfolio value, the number of times bitcoin and gold were bought and sold, and the total amount of commission paid.
+
+An ideal flow is to first set the parameters listed in the Parameters section, run the loop over 250 different moving average window sizes to identify the best, and then run one simulation with that moving average and modify parameters from there to maximize profit.
