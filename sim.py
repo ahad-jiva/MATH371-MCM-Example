@@ -74,13 +74,13 @@ def sim(moving_avg_window: int):
 
 results = []
 for j in range(1, 251):
-    results.append(sim(j)[0])
+    results.append(sim(j)[5])
 print(max(results))
 # print(results)
 
 plt.bar(list(range(1, 251)), results, width=0.6)
 plt.xlabel("N-day moving average")
-plt.ylabel("Total portfolio value (millions)")
+plt.ylabel("Total commission paid")
 plt.text(80, 1000000, f'Maximum: ${max(results):,.2f} ({results.index(max(results)) + 1}-day avg.) \n '
                       f'Minimum: ${min(results):,.2f} ({results.index(min(results)) + 1}-day avg.) \n')
 plt.show()
