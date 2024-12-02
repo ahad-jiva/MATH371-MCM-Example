@@ -78,7 +78,7 @@ for j in range(1, 251):
 print(max(results))
 # print(results)
 
-plt.bar(list(range(1, 251)), results, width=0.6)
+plt.bar(list(range(1, 251)), results, width=0.6, color='red')
 plt.xlabel("N-day moving average")
 plt.ylabel("Total commission paid")
 plt.text(80, 1000000, f'Maximum: ${max(results):,.2f} ({results.index(max(results)) + 1}-day avg.) \n '
