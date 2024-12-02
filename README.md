@@ -1,5 +1,5 @@
 # MATH371-MCM-Example Problem Summary
-You can find the problem statement [here.](https://www.mathmodels.org/Problems/2022/MCM-C/2022_MCM_Problem_C.pdf)
+You can find the problem statement [here.](https://www.mathmodels.org/Problems/2022/MCM-C/2022_MCM_Problem_C.pdf){:target="_blank"}
 ## Goal
 With the data given, the goal is to develop a mathematical model that makes optimal daily trades using only previous price data. $1000 is given at the start, and the model must make as much profit as possible.
 
